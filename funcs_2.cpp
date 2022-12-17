@@ -2,6 +2,26 @@
 #include <string.h>
 #include "middle_str.h"
 
+string itc_slice_str(string str, int start, int endd){
+    string res = "";
+    if (endd >= itc_len(str))
+        endd = itc_len(str) - 1;
+    if(start > endd){
+        return str;
+    }else if(start == (itc_len(str) - 1)){
+        res += str[itc_len(str) - 1];
+        return res;
+    }else{
+        for (long long i = start; i <= endd; i++){
+            res += str[i];
+        }
+        return res;
+    }
+    return "-1";
+}
+
+
+
 string itc_Cezar(string str, int k)
 {
     if (k == 0) return str;
@@ -23,3 +43,39 @@ string itc_Cezar(string str, int k)
     }
     return ans;
 }
+
+string itc_rmFreeSpace(string str)
+{
+    long long len = itc_len(str);
+	string prebuf = "", res = "";
+	for (int i = 0; i < len; i++)
+        if (!((str[i] == ' ') && (str[i + 1] == ' ')))
+            prebuf += str[i];
+	len = itc_len(prebuf);
+	for (int j = 0; j < len; j++)
+        if (!((j == len - 1) && (prebuf[j] == ' ')))
+            res += prebuf[j];
+	return res;
+
+}
+
+bool itc_isIp(string str)
+{
+    int check = 1;
+	long long len = itc_len(str), wordcount = 1;
+	for (int i = 0; i < len; ++i) {
+		if ((str[i] >= '0') && (str[i] <= '9')) {
+			check = check * 10 + str[i] - 48;
+		}
+		else {
+			if ((str[i] != '.') || (check == 1) || (check % 1000 > 255) || (check % 1000 < 0))
+                return 0;
+			check = 1;
+			wordcount++;
+		}
+	}
+	if (wordcount != 4)
+        return 0;
+	return 1;
+}
+
