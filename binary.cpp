@@ -1,4 +1,5 @@
 #include "middle_str.h"
+#include "binary.h"
 #include <iostream>
 
 using namespace std;
@@ -28,4 +29,25 @@ string itc_covert_num(int number, int ss)
 		otv2 += otv1[i];
 	}
 	return otv2;
+}
+
+string itc_num_to_str(long long num){
+    char ch = ' ';
+    string str = "";
+    while(num > 0){
+        ch = (num % 10) + 48;
+        str =  ch + str;
+        num /= 10;
+    }
+    return str;
+}
+
+long long str_to_num(string temp){
+    int ch = 0;
+    long long temp_num = 0;
+    for (long long i = 0; temp[i] != '\0'; ++i){
+        ch = temp[i] - 48;
+        temp_num = temp_num * 10 + ch;
+    }
+    return temp_num;
 }

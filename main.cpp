@@ -7,5 +7,5 @@
 using namespace std;
 
 int main(){
-    cout << itc_isIp("127.0.0.1");
+    cout << itc_decToBase(10, 2);
 }

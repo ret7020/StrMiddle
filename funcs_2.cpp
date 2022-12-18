@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string.h>
 #include "middle_str.h"
+#include "binary.h"
 
 string itc_slice_str(string str, int start, int endd){
     string res = "";
@@ -79,3 +80,18 @@ bool itc_isIp(string str)
 	return 1;
 }
 
+string itc_DecToBin(string str){
+    string temp = "", temp2 = "";
+    long long temp_num = 0;
+    for(long long i = 0; str[i] != '\0'; ++i){
+        if (str[i] < '0' || str[i] > '9'){
+            temp2 += itc_decToBase(str_to_num(temp), 2) + str[i];
+            temp = "";
+        }
+        if ( itc_isDigit(str[i]))
+            temp += str[i];  
+    }
+
+    temp2 += itc_decToBase(str_to_num(temp), 2);
+    return temp2;
+}
