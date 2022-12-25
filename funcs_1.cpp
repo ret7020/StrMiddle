@@ -3,23 +3,22 @@
 #include "middle_str.h"
 
 
-int itc_find_str(string str1, string str2) {
-  long long len_string_1 = itc_len(str1);
-  long long len_string_2 = itc_len(str2);
-  for (long long i = 0; i < len_string_1; i++) {
-    if (str1[i] == str2[0]) {
-      long long k = i;
-      long long j = 0;
-      for (; j < len_string_2 && k < len_string_1; j++, k++) {
-        if (str1[k] != str2[j])
-          break;
-      }
-      if (j == len_string_2)
-        return i;
+int itc_find_str(string str1, string str2){
+    long long length1 = itc_len(str1);
+    long long length2 = itc_len(str2);
+    for (int i = 0; i < length1; ++i) {
+        if(str1[i]==str2[0]){
+            long long j=0;
+            for (long long r=i; r < length1 && j < length2; r++, j++){
+                if (str1[r] != str2[j]) {
+                    return 0;
+                }
+            }
+        }
     }
-  }
-  return -1;
+    return -1;
 }
+
 
 int itc_countWords(string str)
 {
