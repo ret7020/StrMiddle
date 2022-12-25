@@ -47,16 +47,18 @@ string itc_Cezar(string str, int k)
 
 string itc_rmFreeSpace(string str)
 {
-    long long len = itc_len(str);
-	string prebuf = "", res = "";
-	for (int i = 0; i < len; i++)
-        if (!((str[i] == ' ') && (str[i + 1] == ' ')))
-            prebuf += str[i];
-	len = itc_len(prebuf);
-	for (int j = 0; j < len; j++)
-        if (!((j == len - 1) && (prebuf[j] == ' ')))
-            res += prebuf[j];
-	return res;
+    long long len = itc_len(str), i;
+    if (str == "") return str;
+    else if (str[0] == ' ') i = 1;
+    else i = 0;
+    while ((str[i] == ' ') && (i < len)) i++;
+    string res_buff = "";
+    for (i; i < len; i++) {
+        if ((i != len - 1) && ((str[i] != ' ') || (str[i + 1] != ' '))) res_buff += str[i];
+    }
+    if (str[len - 1] != ' ') res_buff += str[len - 1];
+    return res_buff;
+
 
 }
 
