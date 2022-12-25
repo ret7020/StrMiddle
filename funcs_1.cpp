@@ -45,7 +45,7 @@ string itc_maxCharWord(string str)
 {
     long long max = 0, len = itc_len(str);
     string a, b;
-    if (itc_countWords(str) == 1) return "error";
+    if (itc_countWords(str) <= 1) return "error";
     for (int i = 0; i < len; ++i)
     {
         if (((str[i] >= 'A') && (str[i] <= 'Z')) || ((str[i] >= 'a') && (str[i] <= 'z')))
@@ -61,6 +61,7 @@ string itc_maxCharWord(string str)
     }
     if (itc_len(a) > max)
         b = a;
+    if (!itc_len(b)) return "error";
     return b;
 }
 

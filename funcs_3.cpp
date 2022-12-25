@@ -13,7 +13,7 @@ string itc_decToBase(int num, int base){
     }
     while(num > 0){
         tmp = num % base;
-        res = alph[tmp] + res;
+        res += alph[tmp];
         num /= base;
     }
     return res;
