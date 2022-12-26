@@ -2,6 +2,7 @@
 #include <string.h>
 #include "middle_str.h"
 #include "binary.h"
+using namespace std;
 
 string itc_decToBase(int num, int base){
     string alph = "0123456789ABCDEF";

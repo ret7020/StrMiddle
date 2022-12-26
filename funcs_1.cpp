@@ -2,6 +2,7 @@
 #include <string.h>
 #include "middle_str.h"
 
+using namespace std;
 
 int itc_find_str(string str1, string str2){
     long long length1 = itc_len(str1);
