@@ -4,18 +4,27 @@
 
 using namespace std;
 
-int itc_find_str(string str1, string str2){
-    long long length1 = itc_len(str1);
-    long long length2 = itc_len(str2);
-    for (int i = 0; i < length1; ++i) {
-        if(str1[i] == str2[0]){
-            long long j = 0;
-            for (long long r = i; r < length1 && j < length2; r++, j++){
-                if (str1[r] != str2[j]) return 0;
-            }
-        }
-    }
-    return -1;
+long long itc_find_str(string str1, string str2)
+{
+	long long ind = 0, st1 = itc_len(str1), st2 = itc_len(str2), otv = -1;
+	for (int i = 0; i < st1; i++) {
+		if (str1[i] == str2[0]) {
+			otv = i;
+			for (int j = 0; j < st2; j++) {
+				if (str1[j + i] == str2[ind]) {
+					ind++;
+				}
+				else {
+					ind = 0;
+					break;
+				}
+			}
+		}
+		if (ind == st2) {
+			break;
+		}
+	}
+	return(otv);
 }
 
 
@@ -77,6 +86,8 @@ char itc_sameChar(string str)
     return '0';
 }
 
-bool itc_isFirstInSecond(string s1, string s2){
-    return itc_find_str(s2, s1) != -1;
+bool itc_isFirstInSecond(string s1, string s2)
+{
+	return itc_find_str(s1, s2) != -1;
+
 }
