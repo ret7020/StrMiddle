@@ -7,7 +7,7 @@ using namespace std;
 
 // Easy
 long long itc_len(string str);
-int itc_find_str(string str1, string str2);
+long long itc_find_str(string str1, string str2);
 string itc_slice_str(string str, int start, int endd);
 
 
