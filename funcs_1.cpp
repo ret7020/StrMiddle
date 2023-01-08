@@ -86,8 +86,22 @@ char itc_sameChar(string str)
     return '0';
 }
 
-bool itc_isFirstInSecond(string s1, string s2)
+bool itc_isFirstInSecond(string str2, string str1)
 {
-	return itc_find_str(s1, s2) != -1;
-
+	if (str1 == str2) return 1;
+	long long pos = -1;
+  long long i = 0;
+  while (str1[i] != '\0')
+  {
+    long long j = 0;
+    while (str1[i + j] == str2[j])
+      ++j;
+    if (str2[j] == '\0')
+    {
+        pos = i;
+        return 1;
+    }
+    ++i;
+  }
+  return 0;
 }
